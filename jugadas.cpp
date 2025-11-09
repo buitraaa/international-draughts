@@ -32,10 +32,10 @@ bool sonEnemigas(int pieza1, int pieza2) {
     return obtenerColor(pieza1) != obtenerColor(pieza2);
 }
 
-bool esMovimientoSimpleValido(int tablero[tamanoTablero][tamanoTablero], Posicion origen, Posicion destino) {
+bool esMovimientoSimpleValido(int tablero[tamanoTablero][tamanoTablero], posicion origen, posicion destino) {
 
-    if (!esCasillaValida(origen.fila, origen.columna) || 
-        !esCasillaValida(destino.fila, destino.columna)) {
+    if (!casillaValida(origen.fila, origen.columna) || 
+        !casillaValida(destino.fila, destino.columna)) {
         return false;
     }
     
@@ -44,7 +44,7 @@ bool esMovimientoSimpleValido(int tablero[tamanoTablero][tamanoTablero], Posicio
         return false;
     }
     
-    if (!esCasillaOscura(destino.fila, destino.columna)) {
+    if (casillaJugable(destino.fila, destino.columna)) {
         return false;
     }
     
@@ -83,9 +83,9 @@ bool esMovimientoSimpleValido(int tablero[tamanoTablero][tamanoTablero], Posicio
 }
 
 
-bool esCapturaValida(int tablero[tamanoTablero][tamanoTablero], Posicion origen, Posicion destino, Posicion &piezaCapturada) {
-    if (!esCasillaValida(origen.fila, origen.columna) || 
-        !esCasillaValida(destino.fila, destino.columna)) {
+bool esCapturaValida(int tablero[tamanoTablero][tamanoTablero], posicion origen, posicion destino, posicion &piezaCapturada) {
+    if (!casillaValida(origen.fila, origen.columna) || 
+        !casillaValida(destino.fila, destino.columna)) {
         return false;
     }
     
@@ -93,7 +93,7 @@ bool esCapturaValida(int tablero[tamanoTablero][tamanoTablero], Posicion origen,
         return false;
     }
     
-  if (!esCasillaOscura(destino.fila, destino.columna)) {
+  if (!casillaJugable(destino.fila, destino.columna)) {
         return false;
     }
     
@@ -146,17 +146,17 @@ bool puedeCapturarMas(int tablero[tamanoTablero][tamanoTablero], int fila, int c
         {2, 2}     // aba.der
     };
     
-    Posicion origen;
+    posicion origen;
     origen.fila = fila;
     origen.columna = columna;
   
     for (int i = 0; i < 4; i++) {
-        Posicion destino;
+        posicion destino;
         destino.fila = fila + direcciones[i][0];
         destino.columna = columna + direcciones[i][1];
-        
-        Posicion capturada;
-        
+
+        posicion capturada;
+
         if (esCapturaValida(tablero, origen, destino, capturada)) {
             return true;
         }
@@ -166,7 +166,7 @@ bool puedeCapturarMas(int tablero[tamanoTablero][tamanoTablero], int fila, int c
 }
 
 
-void realizarMovimientoSimple(int tablero[tamanoTablero][tamanoTablero], Posicion origen, Posicion destino) {
+void realizarMovimientoSimple(int tablero[tamanoTablero][tamanoTablero], posicion origen, posicion destino) {
     int pieza = tablero[origen.fila][origen.columna];
     tablero[destino.fila][destino.columna] = pieza;
     tablero[origen.fila][origen.columna] = vacia;
@@ -174,7 +174,7 @@ void realizarMovimientoSimple(int tablero[tamanoTablero][tamanoTablero], Posicio
 }
 
 
-void realizarCaptura(int tablero[tamanoTablero][tamanoTablero], Posicion origen, Posicion destino, Posicion piezaCapturada) {
+void realizarCaptura(int tablero[tamanoTablero][tamanoTablero], posicion origen, posicion destino, posicion piezaCapturada) {
     int pieza = tablero[origen.fila][origen.columna];
     tablero[destino.fila][destino.columna] = pieza;
     tablero[origen.fila][origen.columna] = vacia;
