@@ -4,15 +4,15 @@
 #include "tablero.h"
 
 
-bool esMovimientoSimpleValido(int tablero[TAMANIO][TAMANIO], Posicion origen, Posicion destino);
-bool esCapturaValida(int tablero[TAMANIO][TAMANIO], Posicion origen, Posicion destino, Posicion &piezaCapturada);
-bool puedeCapturarMas(int tablero[TAMANIO][TAMANIO], int fila, int columna);
+bool esMovimientoSimpleValido(int tablero[tamanoTablero][tamanoTablero], Posicion origen, Posicion destino);
+bool esCapturaValida(int tablero[tamanoTablero][tamanoTablero], Posicion origen, Posicion destino, Posicion &piezaCapturada);
+bool puedeCapturarMas(int tablero[tamanoTablero][tamanoTablero], int fila, int columna);
 bool sonEnemigas(int pieza1, int pieza2);
 int obtenerColor(int pieza);
 bool esDama(int pieza);
 
-void realizarMovimientoSimple(int tablero[TAMANIO][TAMANIO], Posicion origen, Posicion destino);
-void realizarCaptura(int tablero[TAMANIO][TAMANIO], Posicion origen, Posicion destino, Posicion piezaCapturada);
-void verificarPromocion(int tablero[TAMANIO][TAMANIO], int fila, int columna);
+void realizarMovimientoSimple(int tablero[tamanoTablero][tamanoTablero], Posicion origen, Posicion destino);
+void realizarCaptura(int tablero[tamanoTablero][tamanoTablero], Posicion origen, Posicion destino, Posicion piezaCapturada);
+void verificarPromocion(int tablero[tamanoTablero][tamanoTablero], int fila, int columna);
 
 #endif
