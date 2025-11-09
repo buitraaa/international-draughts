@@ -1,4 +1,4 @@
-#infdef TABLERO_H
+#ifndef TABLERO_H
 #define TABLERO_H
 
 const int tamanoTablero = 10;
@@ -15,8 +15,8 @@ struct posicion{
 };
 
 void inicializarTablero(int tablero[tamanoTablero][tamanoTablero]);
-void mostrarTablero(int tablero[tamanoTablero][tamanoTablero];
-int obtenerPosPieza(int tablero[tamanoTablero][tamanoTablero];
+void mostrarTablero(int tablero[tamanoTablero][tamanoTablero]);
+int obtenerPosPieza(int tablero[tamanoTablero][tamanoTablero]);
 void colocarPieza(int tablero[tamanoTablero][tamanoTablero], int fila, int columna, int pieza);
 bool casillaValida(int fila, int columna);
 int casillaJugable(int fila, int columna);
