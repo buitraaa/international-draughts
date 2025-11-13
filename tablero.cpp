@@ -62,7 +62,6 @@ void mostrarTablero(int tablero[tamanoTablero][tamanoTablero]) {
     cout << "\n";
 }
 
-
 bool casillaValida(int fila, int columna) {
     return (fila >= 0 && fila < tamanoTablero && columna >= 0 && columna < tamanoTablero);
 }
