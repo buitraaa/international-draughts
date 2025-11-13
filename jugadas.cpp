@@ -133,3 +133,4 @@ void verificarPromocion(int tablero[tamanoTablero][tamanoTablero], int fila, int
         cout << "¡Promocion a Dama Negra!" << endl;
     }
 }
+
