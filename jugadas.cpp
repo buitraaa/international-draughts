@@ -1,9 +1,8 @@
 #include "jugadas.h"
-#include <cmath> // Usar abs estándar
-#include <iostream> // Para cout si es necesario depurar
+#include <cmath> 
+#include <iostream> 
 using namespace std;
 
-// Se eliminó la función int abs(int) manual para evitar conflictos
 
 int obtenerColor(int pieza) {
     if (pieza == blanca || pieza == damaBlanca) {
@@ -32,8 +31,6 @@ bool esMovimientoSimpleValido(int tablero[tamanoTablero][tamanoTablero], posicio
         return false;
     }
     
-    // ERROR CORREGIDO: Si NO es jugable, retorna falso.
-    // Antes decía: si ES jugable retorna falso (lo cual bloqueaba todo movimiento).
     if (!casillaJugable(destino.fila, destino.columna)) {
         return false;
     }
@@ -50,11 +47,10 @@ bool esMovimientoSimpleValido(int tablero[tamanoTablero][tamanoTablero], posicio
     if (esDama(pieza)) {
         return true;
     } else {
-        // Fichas normales solo mueven hacia adelante (sin captura)
         if (obtenerColor(pieza) == blanca) {
-            return deltaFila < 0; // Blancas suben (indice disminuye)
+            return deltaFila < 0; 
         } else if (obtenerColor(pieza) == negra) {
-            return deltaFila > 0; // Negras bajan (indice aumenta)
+            return deltaFila > 0; 
         }
     }
     return false;
@@ -67,7 +63,6 @@ bool esCapturaValida(int tablero[tamanoTablero][tamanoTablero], posicion origen,
     
     if (tablero[destino.fila][destino.columna] != vacia) return false;
     
-    // ERROR CORREGIDO: Lógica invertida igual que arriba
     if (!casillaJugable(destino.fila, destino.columna)) return false;
     
     int pieza = tablero[origen.fila][origen.columna];
@@ -79,8 +74,6 @@ bool esCapturaValida(int tablero[tamanoTablero][tamanoTablero], posicion origen,
     if (std::abs(deltaFila) != std::abs(deltaColumna)) return false;
     if (std::abs(deltaFila) != 2) return false;
     
-    // ERROR CORREGIDO: En Damas Internacionales, las fichas normales PUEDEN capturar hacia atrás.
-    // Se eliminó la restricción de dirección para piezas normales en captura.
     
     piezaCapturada.fila = origen.fila + (deltaFila / 2);
     piezaCapturada.columna = origen.columna + (deltaColumna / 2);
@@ -129,7 +122,7 @@ void realizarCaptura(int tablero[tamanoTablero][tamanoTablero], posicion origen,
 
 void verificarPromocion(int tablero[tamanoTablero][tamanoTablero], int fila, int columna) {
     int pieza = tablero[fila][columna];
-    int color = obtenerColor(pieza); // Usar helper para seguridad
+    int color = obtenerColor(pieza); 
     
     if (color == blanca && fila == 0 && !esDama(pieza)) {
         tablero[fila][columna] = damaBlanca;
