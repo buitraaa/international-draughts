@@ -16,9 +16,8 @@ struct posicion{
 
 void inicializarTablero(int tablero[tamanoTablero][tamanoTablero]);
 void mostrarTablero(int tablero[tamanoTablero][tamanoTablero]);
-int obtenerPieza(int tablero[tamanoTablero][tamanoTablero], int fila, int columna);
+int obtenerPieza(int tablero[tamanoTablero][tamanoTablero], int fila, int columna); 
 void colocarPieza(int tablero[tamanoTablero][tamanoTablero], int fila, int columna, int pieza);
-
 bool casillaValida(int fila, int columna);
 bool casillaJugable(int fila, int columna); 
 int contarPiezas(int tablero[tamanoTablero][tamanoTablero], int color);
