@@ -15,9 +15,9 @@ int letraAColumna(char letra);
 
 char columnaALetra(int columna);
 
-bool notacionAPosicion(const char* notacion, Posicion &pos);
+bool notacionAPosicion(const char* notacion, posicion &pos);
 
-void posicionANotacion(Posicion pos, char* notacion);
+void posicionANotacion(posicion pos, char* notacion);
 
 void limpiarPantalla();
 
